@@ -1,0 +1,407 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
+  font-family: Nunito;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"),
+    auto;
+}
+@font-face {
+  font-family: Nunito;
+  src: url("../font/Nunito-font/Nunito-VariableFont_wght.ttf");
+}
+
+:root {
+  --purple: #8b3dff;
+  --darkblue: #130f40;
+}
+
+@keyframes dogMove {
+  from {
+    right: 0%;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes toRight {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes toBottom {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes toLeft {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
+}
+@keyframes toTop {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+
+@keyframes ModalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-400px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Common */
+a:hover {
+  cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"),
+    auto;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Modal click*/
+.modal.close {
+  display: none;
+}
+
+/* Loading */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Header */
+header {
+  width: 100%;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header > img {
+  width: 20%;
+}
+.menu {
+  display: flex;
+  list-style-type: none;
+}
+.menu > li {
+  text-align: center;
+  margin: 0 30px;
+}
+.menu > li > a {
+  width: 186px;
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-reflect: below 20px linear-gradient(transparent, #0005);
+  transition: 0.5s;
+}
+.menu > li > a:hover {
+  color: #000;
+  background: #7fffd4;
+  box-shadow: 0 0 10px #7fffd4, 0 0 25px #7fffd4, 0 0 50px #7fffd4;
+}
+.menu > li:hover .sub-nav {
+  display: block;
+}
+
+/* Bg a */
+.menu > li:nth-child(2) > a {
+  filter: hue-rotate(120deg);
+}
+.menu > li:nth-child(3) > a {
+  filter: hue-rotate(250deg);
+}
+.menu > li:nth-child(4) > a {
+  filter: hue-rotate(320deg);
+}
+
+/* Border a */
+.menu > li > a span:first-child {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(to right, transparent, #7fffd4);
+  animation: toRight linear 2s infinite;
+}
+.menu > li > a span:nth-child(2) {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  top: -100%;
+  right: 0;
+  background: linear-gradient(to bottom, transparent, #7fffd4);
+  animation: toBottom linear 2s infinite;
+  animation-delay: 1s;
+}
+.menu > li > a span:nth-child(3) {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  right: -100%;
+  background: linear-gradient(to left, transparent, #7fffd4);
+  animation: toLeft linear 2s infinite;
+}
+.menu > li > a span:last-child {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  bottom: -100%;
+  left: 0;
+  background: linear-gradient(to top, transparent, #7fffd4);
+  animation: toTop linear 2s infinite;
+  animation-delay: 1s;
+}
+
+/* Sub-nav */
+.sub-nav {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  border-radius: 10px;
+}
+.sub-nav > li {
+  text-align: left;
+}
+.sub-nav > li > a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  transition: 0.5s;
+  filter: hue-rotate(120deg);
+}
+.sub-nav > li > a:hover {
+  color: #000;
+  background: #7fffd4;
+  box-shadow: 0 0 10px #7fffd4, 0 0 25px #7fffd4, 0 0 50px #7fffd4;
+}
+.sub-nav > li > i {
+  display: inline-block;
+}
+.sub-nav > li > p {
+  font-size: 14px;
+}
+
+/* Img */
+.body-container {
+  background: url("../img/space.gif") center / cover no-repeat;
+  width: 100%;
+  height: 975px;
+  overflow: hidden;
+  position: relative;
+}
+.body-container > img.dog {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 120px;
+  animation: dogMove ease 20s infinite;
+}
+.body-container > img.moon {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+}
+
+/* Text */
+.text-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 600px;
+  margin: 0 0 200px 140px;
+}
+.text-content span {
+  color: orangered;
+}
+.text-content h1 {
+  color: #f1f1f1;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px #f1f1f1;
+}
+.text-content p {
+  color: #ddd;
+  margin: 24px 0;
+  line-height: 1.6;
+  width: 80%;
+}
+.text-content a {
+  color: #fff;
+  padding: 8px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: 0.5s;
+  display: inline-block;
+  overflow: hidden;
+}
+.text-content a:hover {
+  background-color: #f1f1f1;
+  color: #333;
+  box-shadow: 0 0 20px #f1f1f1;
+}
+.text-content a span:first-child {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(to right, transparent, #f1f1f1);
+  animation: toRight linear 2s infinite;
+}
+.text-content a span:nth-child(2) {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  top: -100%;
+  right: 0;
+  background: linear-gradient(to bottom, transparent, #f1f1f1);
+  animation: toBottom linear 2s infinite;
+  animation-delay: 1s;
+}
+.text-content a span:nth-child(3) {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  right: -100%;
+  background: linear-gradient(to left, transparent, #f1f1f1);
+  animation: toLeft linear 2s infinite;
+}
+.text-content a span:last-child {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  bottom: -100%;
+  left: 0;
+  background: linear-gradient(to top, transparent, #f1f1f1);
+  animation: toTop linear 2s infinite;
+  animation-delay: 1s;
+}
+
+/* Contact */
+.contact {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.contact a {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-size: 20px;
+  font-weight: bold;
+  transition: linear 0.2s;
+}
+.contact a i {
+  margin-left: 10px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+.modal .modal-container {
+  background-color: #fff;
+  border-radius: 22px;
+  animation: ModalFadeIn ease 1s;
+}
+.modal-container .modal-header {
+  text-align: center;
+  padding: 12px 130px;
+  color: blueviolet;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid #ccc;
+}
+.modal-container .modal-content {
+  text-align: center;
+  padding: 12px 12px 30px;
+}
+.modal-container .modal-content > p:first-child {
+  color: rgba(0, 0, 0, 0.8);
+}
+.modal-container .modal-content > p:last-child {
+  font-size: 24px;
+}
+.modal-container .modal-choose {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+}
+.modal-container .modal-choose a {
+  width: 50%;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: blueviolet;
+}
+.modal-container .modal-choose a:hover {
+  color: orange;
+}
+.modal-container .modal-choose a:first-child {
+  border-radius: 0 0 0 22px;
+  border-right: 0.5px solid #fff;
+}
+.modal-container .modal-choose a:last-child {
+  border-radius: 0 0 22px 0;
+}
